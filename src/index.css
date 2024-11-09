@@ -5,6 +5,179 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;1,400&display=swap');
 
+html, body {
+    background: linear-gradient(267.45deg, #2d3132 -34.23%, rgb(124, 16, 187) 99.39%);
+    animation: backgroundChange 10s infinite alternate;
+    transition: background 1s ease; /* Smooth transition for background change */
+}
+
+/* Keyframes for background color change */
+@keyframes backgroundChange {
+    0% {
+        background: linear-gradient(267.45deg, #2d3132, #7c10bb); /* Dark teal and purple */
+    }
+    25% {
+        background: linear-gradient(267.45deg, #4c6a92, #e91e63); /* Blue and pink */
+    }
+    50% {
+        background: linear-gradient(267.45deg, #1a237e, #ffeb3b); /* Blue and yellow */
+    }
+    75% {
+        background: linear-gradient(267.45deg, #00695c, #f44336); /* Green and red */
+    }
+    100% {
+        background: linear-gradient(267.45deg, #607d8b, #9c27b0); /* Gray-blue and purple */
+    }
+}
+
 .alchemy {
-    background: linear-gradient(267.45deg,#05d5ff -34.23%,#53f 99.39%)
+
+    height: 100svh;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* To hide bubbles that move outside the container */
+}
+
+/* Style for the bubbles */
+.alchemy::before, .alchemy::after, .alchemy .bubble {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    animation: bubbleAnimation 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.alchemy::before {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.alchemy::after {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.alchemy .bubble {
+    width: 40px;
+    height: 40px;
+    top: 70%;
+    left: 50%;
+    animation-delay: 4s;
+}
+
+/* Bubble animation keyframes */
+@keyframes bubbleAnimation {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(30vw, -20vh) scale(1.2);
+    }
+    50% {
+        transform: translate(-30vw, 10vh) scale(1);
+    }
+    75% {
+        transform: translate(20vw, 30vh) scale(0.8);
+    }
+    100% {
+        transform: translate(-20vw, -10vh) scale(1.1);
+    }
+}
+
+.headerTxt {
+    font-size: 3rem;
+    font-weight: bold;
+    animation: colorChange 2s infinite; /* Change color every 2 seconds */
+}
+
+@keyframes colorChange {
+    0% {
+        color: hsl(0, 100%, 50%);  /* Red */
+    }
+    25% {
+        color: hsl(120, 100%, 50%);  /* Green */
+    }
+    50% {
+        color: hsl(240, 100%, 50%);  /* Blue */
+    }
+    75% {
+        color: hsl(60, 100%, 50%);  /* Yellow */
+    }
+    100% {
+        color: hsl(300, 100%, 50%);  /* Purple */
+    }
+}
+.buyme {
+    cursor: pointer;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+/* Popup Content */
+.popup-content {
+    background-color: #2d3132;
+    padding: 50px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto; /* Center the content horizontally */
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Content Heading */
+.popup-content h2 {
+    margin-bottom: 10px;
+}
+
+/* Popup Content Paragraph */
+.popup-content p {
+    margin-bottom: 20px;
+}
+
+/* Popup Content Button */
+.popup-content button {
+    margin-top: 20px;
+}
+
+/* Fullscreen Popup on Mobile */
+@media (max-width: 640px) {
+    .popup-content {
+        padding: 20px;  /* Adjust padding for smaller screens */
+        max-width: 100%; /* Ensure it takes full width */
+        width: 100%;    /* Allow it to stretch to full screen */
+        height: 100%;   /* Full height for mobile devices */
+        border-radius: 0; /* Remove rounded corners on small screens */
+        position: fixed; /* Make it fixed on the screen */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        right: 0; /* Align to the right */
+        bottom: 0; /* Align to the bottom */
+        overflow-y: auto; /* Allow scrolling if content overflows */
+        display: flex;
+        justify-content: center; /* Center content vertically */
+        align-items: center; /* Center content horizontally */
+    }
 }
